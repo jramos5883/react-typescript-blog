@@ -1,0 +1,19 @@
+.dir-container {
+  height: 100px;
+  width: 100%;
+  background-color: grey;
+
+  .dir-links-container {
+    display: flex;
+    justify-content: space-between;
+    .dir-link {
+      text-decoration: none;
+      font-size: 2rem;
+    }
+  }
+}
+
+.outlet-container {
+  min-height: 800px;
+  background-color: green;
+}
