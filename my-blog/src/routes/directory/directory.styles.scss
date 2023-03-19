@@ -2,6 +2,8 @@
   height: 100px;
   width: 100%;
   background-color: grey;
+  display: flex;
+  flex-direction: column;
 
   .dir-links-container {
     display: flex;
@@ -11,9 +13,4 @@
       font-size: 2rem;
     }
   }
-}
-
-.outlet-container {
-  min-height: 800px;
-  background-color: green;
 }

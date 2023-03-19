@@ -21,10 +21,13 @@ const Directory = () => {
           <Link className="dir-link" to="createposts">
             Create Posts
           </Link>
+          <Link className="dir-link" to="signin">
+            Sign In
+          </Link>
         </div>
         <Outlet />
+        <Footer />
       </div>
-      <Footer />
     </Fragment>
   );
 };
