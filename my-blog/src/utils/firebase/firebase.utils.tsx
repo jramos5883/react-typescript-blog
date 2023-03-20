@@ -33,8 +33,11 @@ export const db = getFirestore(firebaseApp);
 
 interface IUser {
   uid: string;
+  displayName: string | null;
+  email: string | null;
 }
 
+// doc takes 2 parameters, the db collection and the ID of the document
 export const createUserDocumentFromAuth = async (userAuth: IUser) => {
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log(userDocRef);
@@ -42,4 +45,23 @@ export const createUserDocumentFromAuth = async (userAuth: IUser) => {
   const userSnapshot = await getDoc(userDocRef);
   console.log(userSnapshot);
   console.log(userSnapshot.exists());
+
+  // if user data doesn't exists
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+      });
+    } catch (error) {
+      console.log("Error creating the user.");
+    }
+  }
+  // if user data exists
+  return userDocRef;
+  // return userDocRef
 };
