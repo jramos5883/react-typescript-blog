@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 // Firestore utils
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -38,7 +43,11 @@ interface IUser {
 }
 
 // doc takes 2 parameters, the db collection and the ID of the document
-export const createUserDocumentFromAuth = async (userAuth: IUser) => {
+export const createUserDocumentFromAuth = async (
+  userAuth: IUser,
+  additionalInformation = {}
+) => {
+  if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log(userDocRef);
 
@@ -56,12 +65,21 @@ export const createUserDocumentFromAuth = async (userAuth: IUser) => {
         displayName,
         email,
         createdAt,
+        ...additionalInformation,
       });
-    } catch (error) {
-      console.log("Error creating the user.");
+    } catch (error: any) {
+      console.log("Error creating the user.", error.message);
     }
   }
   // if user data exists
   return userDocRef;
   // return userDocRef
+};
+
+export const createAuthUserWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
 };

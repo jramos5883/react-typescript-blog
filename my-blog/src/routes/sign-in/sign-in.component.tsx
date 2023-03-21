@@ -3,6 +3,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
+import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
+
 import "./sign-in.styles.scss";
 
 const SignIn = () => {
@@ -15,6 +17,7 @@ const SignIn = () => {
     <div className="sign-in-container">
       <h1>This is the Sign In page!</h1>
       <button onClick={logGoogleUser}>Sign in with Google Popup!</button>
+      <SignUpForm />
     </div>
   );
 };
