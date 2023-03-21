@@ -21,7 +21,7 @@ const Directory = () => {
           <Link className="dir-link" to="createposts">
             Create Posts
           </Link>
-          <Link className="dir-link" to="signin">
+          <Link className="dir-link" to="auth">
             Sign In
           </Link>
         </div>
