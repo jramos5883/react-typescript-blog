@@ -45,7 +45,18 @@ const SignInForm = () => {
       );
       console.log(response);
       resetFormFields();
-    } catch (error) {}
+    } catch (error: any) {
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("Incorrect password for email.");
+          break;
+        case "auth/user-not-found":
+          alert("No user associated with this email.");
+          break;
+        default:
+          console.log(error);
+      }
+    }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

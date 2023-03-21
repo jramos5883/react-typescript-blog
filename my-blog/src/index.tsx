@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { PostsProvider } from "./contexts/PostsContext";
 
 import "./index.css";
 import App from "./App";
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <PostsProvider>
+        <App />
+      </PostsProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
