@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import "firebase/firestore";
 import {
   getAuth,
   signInWithPopup,
@@ -9,7 +10,20 @@ import {
 } from "firebase/auth";
 
 // Firestore utils
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+} from "firebase/firestore";
+
+//testing
+import { useState, useEffect } from "react";
+import { onSnapshot, query, orderBy } from "firebase/firestore";
+
+import { ICreatePostForm } from "../../components/createPosts-form/createPosts-form.component";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -91,4 +105,57 @@ export const signInAuthUserWithEmailAndPassword = async (
 ) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
+};
+
+// setting up CRUD functions for firestore below
+
+// post collection ref
+export const postCollectionRef = collection(db, "posts");
+
+// get collection data
+
+interface IPost {
+  id: string;
+  [key: string]: any;
+}
+
+getDocs(postCollectionRef)
+  .then((snapshot) => {
+    let posts: IPost[] = [];
+    snapshot.docs.forEach((doc) => {
+      posts.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(posts);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+
+// displaying database posts
+
+export const usePosts = () => {
+  const [posts, setPosts] = useState<ICreatePostForm[]>([]);
+
+  useEffect(() => {
+    const q = query(postCollectionRef, orderBy("publicationDate", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedPosts: ICreatePostForm[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        fetchedPosts.push({
+          title: data.title,
+          image: data.image,
+          content: data.content,
+          publicationDate: data.publicationDate.toDate(),
+        });
+      });
+      setPosts(fetchedPosts);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return posts;
 };

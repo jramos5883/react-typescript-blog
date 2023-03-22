@@ -1,4 +1,5 @@
 import { usePosts } from "../../contexts/PostsContext";
+
 import DisplayPosts from "../../components/displayPosts/displayPosts.componenet";
 
 import "./posts.styles.scss";
@@ -9,7 +10,7 @@ const Posts: React.FC = () => {
   return (
     <div className="posts-container">
       <div className="posts-section">
-      <h1>This is my Sidebar Section!</h1>
+        <h1>This is my Blog Post Section!</h1>
         <DisplayPosts posts={posts} />
       </div>
 

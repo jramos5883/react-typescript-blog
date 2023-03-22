@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { addDoc } from "firebase/firestore";
 import "./createPosts-form.styles.scss";
+
+import { postCollectionRef } from "../../utils/firebase/firebase.utils";
 
 export type ICreatePostForm = {
   title: string;
@@ -28,6 +31,7 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
     };
 
     onAddPost(newPost);
+    addDoc(postCollectionRef, newPost);
     console.log(newPost);
 
     // Clear form fields after submitting
@@ -36,12 +40,15 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
     setContent("");
   };
 
+  // Working on getting my blog post object to be pushed into my firestore database
+
   return (
     <div>
       <form className="createPosts-form-container" onSubmit={handleSubmit}>
         <label htmlFor="title">Title:</label>
         <input
           type="text"
+          name="title"
           id="title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
@@ -51,6 +58,7 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
         <label htmlFor="image">Image URL:</label>
         <input
           type="url"
+          name="image"
           id="image"
           value={image}
           onChange={(event) => setImage(event.target.value)}
@@ -58,6 +66,7 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
 
         <label htmlFor="content">Content:</label>
         <textarea
+          name="content"
           id="content"
           value={content}
           onChange={(event) => setContent(event.target.value)}
