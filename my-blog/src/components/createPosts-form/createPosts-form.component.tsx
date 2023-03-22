@@ -8,7 +8,7 @@ export type ICreatePostForm = {
   title: string;
   image: string;
   content: string;
-  publicationDate: Date;
+  publicationDate: string;
 };
 
 interface CreatePostFormProps {
@@ -19,6 +19,7 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
+  const [publishDate, setPublishDate] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,17 +28,20 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
       title,
       image,
       content,
-      publicationDate: new Date(),
+      publicationDate: publishDate,
     };
 
     onAddPost(newPost);
-    addDoc(postCollectionRef, newPost);
+    addDoc(postCollectionRef, {
+      ...newPost,
+    });
     console.log(newPost);
 
     // Clear form fields after submitting
     setTitle("");
     setImage("");
     setContent("");
+    setPublishDate("");
   };
 
   // Working on getting my blog post object to be pushed into my firestore database
@@ -70,6 +74,16 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
           id="content"
           value={content}
           onChange={(event) => setContent(event.target.value)}
+          required
+        />
+
+        <label htmlFor="publishDate">Date Published:</label>
+        <input
+          type="date"
+          name="publishDate"
+          id="publishDate"
+          value={publishDate}
+          onChange={(event) => setPublishDate(event.target.value)}
           required
         />
 

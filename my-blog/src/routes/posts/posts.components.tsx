@@ -1,17 +1,12 @@
-import { usePosts } from "../../contexts/PostsContext";
-
-import DisplayPosts from "../../components/displayPosts/displayPosts.componenet";
-
+import DisplayDBPosts from "../../components/displayDBPosts/displayDBPosts.component";
 import "./posts.styles.scss";
 
 const Posts: React.FC = () => {
-  const { posts } = usePosts();
-
   return (
     <div className="posts-container">
       <div className="posts-section">
-        <h1>This is my Blog Post Section!</h1>
-        <DisplayPosts posts={posts} />
+        <h1>This is my Content Section!</h1>
+        <DisplayDBPosts />
       </div>
 
       <div className="sidebar-section">

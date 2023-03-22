@@ -146,7 +146,7 @@ export const usePosts = () => {
           title: data.title,
           image: data.image,
           content: data.content,
-          publicationDate: data.publicationDate.toDate(),
+          publicationDate: data.publicationDate,
         });
       });
       setPosts(fetchedPosts);
