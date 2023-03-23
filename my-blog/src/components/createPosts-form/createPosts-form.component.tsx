@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 import "./createPosts-form.styles.scss";
 
-import { postCollectionRef } from "../../utils/firebase/firebase.utils";
+import {
+  postCollectionRef,
+  blogStorage,
+} from "../../utils/firebase/firebase.utils";
 
 export type ICreatePostForm = {
   title: string;
   image: string;
   content: string;
   publicationDate: string;
+  imageUrl?: string;
 };
 
 interface CreatePostFormProps {
@@ -17,16 +23,30 @@ interface CreatePostFormProps {
 
 const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const [content, setContent] = useState("");
   const [publishDate, setPublishDate] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    let imageUrl = "";
+
+    if (file) {
+      const blogStorageRef = ref(blogStorage, `blogImages/${file.name}`);
+      const snapshot = await uploadBytes(blogStorageRef, file);
+      imageUrl = await getDownloadURL(snapshot.ref);
+    }
 
     const newPost: ICreatePostForm = {
       title,
-      image,
+      image: imageUrl,
       content,
       publicationDate: publishDate,
     };
@@ -39,7 +59,7 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
 
     // Clear form fields after submitting
     setTitle("");
-    setImage("");
+    setFile(null);
     setContent("");
     setPublishDate("");
   };
@@ -59,14 +79,8 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
           required
         />
 
-        <label htmlFor="image">Image URL:</label>
-        <input
-          type="url"
-          name="image"
-          id="image"
-          value={image}
-          onChange={(event) => setImage(event.target.value)}
-        />
+        <label htmlFor="file">Upload Image:</label>
+        <input type="file" id="file" onChange={handleFileChange} />
 
         <label htmlFor="content">Content:</label>
         <textarea

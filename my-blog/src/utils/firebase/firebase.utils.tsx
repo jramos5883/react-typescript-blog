@@ -19,9 +19,10 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-//testing
+// testing
 import { useState, useEffect } from "react";
 import { onSnapshot, query, orderBy } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 import { ICreatePostForm } from "../../components/createPosts-form/createPosts-form.component";
 
@@ -159,3 +160,7 @@ export const usePosts = () => {
 
   return posts;
 };
+
+// setting up firebase storage
+
+export const blogStorage = getStorage(firebaseApp);
