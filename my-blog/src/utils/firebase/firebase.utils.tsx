@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 } from "firebase/auth";
 
 // Firestore utils
@@ -164,3 +166,29 @@ export const usePosts = () => {
 // setting up firebase storage
 
 export const blogStorage = getStorage(firebaseApp);
+
+// setting up track user and sign out features
+
+export const signOutUser = async () => {
+  await signOut(auth);
+};
+
+export const useAuth = () => {
+  const [user, setUser] = useState<null | IUser>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return user;
+};

@@ -1,10 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
 import { Fragment } from "react";
 
+import { signOutUser, useAuth } from "../../utils/firebase/firebase.utils";
+
 import "./directory.styles.scss";
 import Footer from "../../components/footer/footer.component";
 
 const Directory = () => {
+  const user = useAuth();
+
   return (
     <Fragment>
       <div className="dir-container">
@@ -18,12 +22,20 @@ const Directory = () => {
           <Link className="dir-link" to="posts">
             Posts
           </Link>
-          <Link className="dir-link" to="createposts">
-            Create Posts
-          </Link>
-          <Link className="dir-link" to="auth">
-            Sign In
-          </Link>
+          {user ? (
+            <Fragment>
+              <Link className="dir-link" to="createposts">
+                Create Posts
+              </Link>
+              <Link className="dir-link" to="auth" onClick={signOutUser}>
+                Sign Out
+              </Link>
+            </Fragment>
+          ) : (
+            <Link className="dir-link" to="auth">
+              Sign In
+            </Link>
+          )}
         </div>
         <Outlet />
         <Footer />

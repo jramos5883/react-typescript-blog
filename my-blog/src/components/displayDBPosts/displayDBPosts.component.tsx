@@ -7,11 +7,11 @@ const DisplayDBPosts = () => {
   return (
     <div>
       {posts.map((post, index) => (
-        <div key={index}>
-          <h2>{post.title}</h2>
-          {post.image && <img src={post.image} alt={post.title} />}
-          <p>{post.content}</p>
-          <p>{post.publicationDate.toLocaleString()}</p>
+        <div className='blogpost-container' key={index}>
+          <h2 className='post-header'>{post.title}</h2>
+          {post.image && <img className='image-edit' src={post.image} alt={post.title} />}
+          <p className='publication-date'>{post.publicationDate.toLocaleString()}</p>
+          <p className='content-section'>{post.content}</p>
         </div>
       ))}
     </div>
