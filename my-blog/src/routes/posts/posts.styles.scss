@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   .posts-section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     grid-column-start: 1;
     grid-column-end: 2;
     background-color: blue;

@@ -6,6 +6,7 @@ const DisplayDBPosts = () => {
   const posts = usePosts();
   return (
     <div>
+      <h2>Blog Section</h2>
       {posts.map((post, index) => (
         <div className='blogpost-container' key={index}>
           <h2 className='post-header'>{post.title}</h2>

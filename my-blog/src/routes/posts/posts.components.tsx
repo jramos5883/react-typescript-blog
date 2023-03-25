@@ -5,7 +5,6 @@ const Posts: React.FC = () => {
   return (
     <div className="posts-container">
       <div className="posts-section">
-        <h1>This is my Content Section!</h1>
         <DisplayDBPosts />
       </div>
 
