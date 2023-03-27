@@ -16,11 +16,11 @@ const Directory = () => {
           <Link className="dir-link" to="/">
             Home
           </Link>
-          <Link className="dir-link" to="about">
-            About
-          </Link>
           <Link className="dir-link" to="posts">
-            Posts
+            Blog
+          </Link>
+          <Link className="dir-link" to="about">
+            About Me
           </Link>
           {user ? (
             <Fragment>
