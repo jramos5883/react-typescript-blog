@@ -11,8 +11,8 @@ const Directory = () => {
 
   return (
     <Fragment>
-      <div className="dir-container">
-        <div className="dir-links-container">
+      <div className="dir-container container-fluid">
+        <div className="dir-links-container container-xxl">
           <Link className="dir-link nav-link active" to="/">
             Home
           </Link>

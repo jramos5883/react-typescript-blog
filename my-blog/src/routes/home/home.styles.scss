@@ -1,7 +1,18 @@
-.home-container {
-  max-width: 1080px;
+.home-header {
+  justify-content: center;
+  text-align: center;
+}
 
-  img {
-    max-width: 1080px;
-  }
+img {
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.content-container {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.indent {
+  text-indent: 30px;
 }
