@@ -13,7 +13,7 @@ const Directory = () => {
     <Fragment>
       <div className="dir-container">
         <div className="dir-links-container">
-          <Link className="dir-link" to="/">
+          <Link className="dir-link nav-link active" to="/">
             Home
           </Link>
           <Link className="dir-link" to="posts">
