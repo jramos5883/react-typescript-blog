@@ -6,13 +6,19 @@ const DisplayDBPosts = () => {
   const posts = usePosts();
   return (
     <div>
-      <h2>Blog Section</h2>
+      <h1>Blog Section</h1>
       {posts.map((post, index) => (
-        <div className='blogpost-container' key={index}>
-          <h2 className='post-header'>{post.title}</h2>
-          {post.image && <img className='image-edit' src={post.image} alt={post.title} />}
-          <p className='publication-date'>{post.publicationDate.toLocaleString()}</p>
-          <p className='content-section'>{post.content}</p>
+        <div className="blogpost-container container-fluid" key={index}>
+          <div className="boarders">
+            <h2 className="post-header">{post.title}</h2>
+            {post.image && (
+              <img className="image-edit" src={post.image} alt={post.title} />
+            )}
+            <p className="publication-date">
+              Posted on {post.publicationDate.toLocaleString()}{" "}
+            </p>
+            <p className="content-section">{post.content}</p>
+          </div>
         </div>
       ))}
     </div>

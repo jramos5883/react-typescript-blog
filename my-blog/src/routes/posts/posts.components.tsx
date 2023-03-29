@@ -3,12 +3,12 @@ import "./posts.styles.scss";
 
 const Posts: React.FC = () => {
   return (
-    <div className="posts-container">
-      <div className="posts-section">
+    <div className="container-fluid posts-container">
+      <div className="container-fluid posts-section">
         <DisplayDBPosts />
       </div>
 
-      <div className="sidebar-section">
+      <div className="container-fluid sidebar-section">
         <h1>This is my Sidebar Section!</h1>
         <h2>Call To Action!</h2>
         <p>

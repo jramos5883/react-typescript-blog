@@ -37,8 +37,8 @@ const Home = () => {
           determination to excel as a self-taught developer in this fast-paced
           tech world. Join me as I explore the world of software development,
           with the hopes of inspiring and empowering others who dream of making
-          it in the tech industry. Thank you for joining me on this adventure.
-          Let's learn, grow, and build amazing things together!
+          it in the tech industry. Let's learn, grow, and build amazing things
+          together!
         </p>
       </div>
     </div>
