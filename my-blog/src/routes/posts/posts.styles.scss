@@ -1,15 +1,16 @@
-.posts-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  .posts-section {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-  .sidebar-section {
-    grid-column-start: 2;
-    grid-column-end: 3;
-  }
+// Going to comment out side bar until contact form and newsletter are made
+// .posts-container {
+//   display: grid;
+//   grid-template-columns: 2fr 1fr;
+.posts-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
+// .sidebar-section {
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+// }
+// }

@@ -82,15 +82,6 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
         <label htmlFor="file">Upload Image:</label>
         <input type="file" id="file" onChange={handleFileChange} />
 
-        <label htmlFor="content">Content:</label>
-        <textarea
-          name="content"
-          id="content"
-          value={content}
-          onChange={(event) => setContent(event.target.value)}
-          required
-        />
-
         <label htmlFor="publishDate">Date Published:</label>
         <input
           type="date"
@@ -98,6 +89,17 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onAddPost }) => {
           id="publishDate"
           value={publishDate}
           onChange={(event) => setPublishDate(event.target.value)}
+          required
+        />
+
+        <label htmlFor="content">Content:</label>
+        <textarea
+          rows={20}
+          cols={50}
+          name="content"
+          id="content"
+          value={content}
+          onChange={(event) => setContent(event.target.value)}
           required
         />
 

@@ -6,7 +6,7 @@ const DisplayDBPosts = () => {
   const posts = usePosts();
   return (
     <div>
-      <h1>Blog Section</h1>
+      <h1>Blog Posts</h1>
       {posts.map((post, index) => (
         <div className="blogpost-container container-fluid" key={index}>
           <div className="boarders">
@@ -17,7 +17,7 @@ const DisplayDBPosts = () => {
             <p className="publication-date">
               Posted on {post.publicationDate.toLocaleString()}{" "}
             </p>
-            <p className="content-section">{post.content}</p>
+            <p className="content-section indent">{post.content}</p>
           </div>
         </div>
       ))}

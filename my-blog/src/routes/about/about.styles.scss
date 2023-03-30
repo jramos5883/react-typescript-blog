@@ -1,19 +1,29 @@
+.about-header {
+  text-align: center;
+}
 .about-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  min-height: 850px;
   .about-section {
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
     grid-column-start: 1;
     grid-column-end: 2;
     font-size: 1.25rem;
   }
   .pic-section {
+    display: flex;
+    flex-direction: column;
     grid-column-start: 2;
     grid-column-end: 3;
     img {
       border-radius: 5%;
     }
   }
+}
+
+.indent {
+  text-indent: 30px;
 }

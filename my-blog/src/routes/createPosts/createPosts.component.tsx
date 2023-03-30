@@ -8,7 +8,7 @@ const CreatePosts: React.FC = () => {
 
   return (
     <div className="createPosts-container">
-      <h1>This is my Create Posts page!</h1>
+      <h1 className='posts-header'>Create Post</h1>
       <CreatePostForm onAddPost={addNewPost} />
     </div>
   );

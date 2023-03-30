@@ -25,7 +25,7 @@ const Home = () => {
           unique coding journey, openly sharing the hurdles and victories I've
           faced as a self-taught developer. I'll provide a behind-the-scenes
           look at my programming process, highlighting the techniques and
-          practices I've adopted to tackle software development challenges. By
+          practices I've adopted to tackle various coding challenges. By
           displaying my current projects and past accomplishments, I aim to
           demonstrate my skills and progress in the field. This blog is a symbol
           of my persistent growth and steadfast devotion to excelling in the
