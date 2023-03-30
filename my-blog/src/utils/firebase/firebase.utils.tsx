@@ -8,7 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from "firebase/auth";
 
 // Firestore utils
@@ -67,11 +67,8 @@ export const createUserDocumentFromAuth = async (
 ) => {
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef);
 
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
-  console.log(userSnapshot.exists());
 
   // if user data doesn't exists
   if (!userSnapshot.exists()) {
@@ -128,7 +125,6 @@ getDocs(postCollectionRef)
     snapshot.docs.forEach((doc) => {
       posts.push({ ...doc.data(), id: doc.id });
     });
-    console.log(posts);
   })
   .catch((err) => {
     console.log(err.message);
