@@ -3,9 +3,12 @@ import headshot from "../../images/headshot.jpg";
 
 const About = () => {
   return (
-    <div>
+    <div className="container-fluid">
       <h1 className="about-header">About Me</h1>
       <div className="about-container container-fluid">
+        <div className="pic-section container-fluid">
+          <img src={headshot} alt="" />
+        </div>
         <div className="about-section container-fluid">
           <p className="indent">
             Hi, I'm John - a lifelong learner with a passion for science and
@@ -37,9 +40,6 @@ const About = () => {
             asset to any business looking for a passionate, knowledgeable, and
             adaptable team member.
           </p>
-        </div>
-        <div className="pic-section container-fluid">
-          <img src={headshot} alt="" />
         </div>
       </div>
     </div>

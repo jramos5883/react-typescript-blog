@@ -27,9 +27,9 @@ const Home = () => {
           look at my programming process, highlighting the techniques and
           practices I've adopted to tackle various coding challenges. By
           displaying my current projects and past accomplishments, I aim to
-          demonstrate my skills and progress in the field. This blog is a symbol
-          of my persistent growth and steadfast devotion to excelling in the
-          competitive world of technology.
+          demonstrate my skills and progress as a software engineer. This blog
+          is a symbol of my persistent growth and steadfast devotion to
+          excelling in the competitive world of technology.
         </p>
         <p className="indent">
           Throughout this journey, I am committed to documenting my ongoing
