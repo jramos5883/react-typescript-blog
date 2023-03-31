@@ -10,6 +10,9 @@
     img {
       border-radius: 5%;
       max-width: 750px;
+      border-style: solid; /* You can also use 'dashed', 'dotted', 'double', etc. */
+      border-width: 10px;
+      border-color: navy; /* Replace this with your desired color */
     }
   }
 }
