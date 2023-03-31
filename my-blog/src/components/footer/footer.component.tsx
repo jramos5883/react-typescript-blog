@@ -11,7 +11,7 @@ const Footer = () => {
 
       <h3>|</h3>
 
-      <h3>Email: jrprodev@gmail.com</h3>
+      <h3>Email: jrprodev @gmail.com</h3>
 
       <h3>|</h3>
     </div>

@@ -32,9 +32,14 @@ const Directory = () => {
               </Link>
             </Fragment>
           ) : (
-            <Link className="dir-link" to="auth">
-              Sign In
-            </Link>
+            <div>
+              <a href="https://www.linkedin.com/in/jrprodev/">
+                <i className="fa-brands fa-linkedin fa-2xl LI-icon"> </i>
+              </a>
+            </div>
+            // <Link className="dir-link" to="auth">
+            //   Sign In
+            // </Link>
           )}
         </div>
         <Outlet />

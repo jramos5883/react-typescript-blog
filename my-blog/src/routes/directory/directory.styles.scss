@@ -6,10 +6,15 @@
 
   .dir-links-container {
     display: flex;
+    text-align: center;
     justify-content: space-between;
     .dir-link {
       text-decoration: none;
       font-size: 1.5rem;
     }
   }
+}
+
+.LI-icon {
+  padding-top: 20px;
 }
